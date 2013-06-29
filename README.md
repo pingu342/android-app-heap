@@ -36,32 +36,33 @@ OutOfMemoryErrorを発生させるテストアプリ。
 	* Application Heap Free Size
 		* `Native Heap Free Size + Java Heap Free Size`
 	* Native Heap Size
-		* このアプリケーションのNative Heap Sizeの現在の上限
-> Native Heap Allocated Size増加に合わせて、この上限は増加する。
-> Java HeapのRuntime.maxMemoryに相当する**本当の上限**は無い。
-> このアプリケーションはLinux Heap Free Sizeに残量がある限りNative Heapからメモリを獲得できる。
-> ただしLinux Heap Free SizeがLow Memory Thresholdを下回ったLowMemory状態では、LowMemoryKillerによってこのアプリケーションがKillされる可能性がある。
-> LowMemory状態では、LowMemoryKillerは、各アプリケーションのOOM値(adjとminfreeから決まる値)を見て、どのアプリケーションをKillするかを決める。
+		* このアプリケーションのNative Heap Sizeの**現在の上限**
+			* Native Heap Allocated Size増加に合わせてNative Heap Sizeは増加する。  
+			Java HeapのRuntime.maxMemoryに相当する**本当の上限**は無い。
+			このアプリケーションはLinux Heap Free Sizeに残量がある限りNative Heapからメモリを獲得できる。
+			ただしNative Heap Allocated Sizeの増加によってLinux Heap Free SizeがLow Memory Thresholdを下回ったLowMemory状態では、LowMemoryKillerによってこのアプリケーションがKillされる可能性がある。
+			LowMemory状態では、LowMemoryKillerは、各アプリケーションのOOM値(adjとminfreeから決まる値)を見て、どのアプリケーションをKillするかを決める。
 	* Native Heap Allocated Size
 		* このアプリケーションが使用中のNative Heap Size  
 	* Native Heap Free Size
-		* Native Heap Sizeの残量
+		* Native Heap Sizeの**現在の残量**
 		すなわち、`Native Heap Size - Native Heap Allocated Size`
 	* Java Heap Size
-		* このアプリケーションのJava Heap Sizeの現在の上限  
-> Java Heap Allocated Size増加に合わせてJava Heap Sizeは増加する。
-> このアプリケーションのJava Heap Sizeの本当の上限はRuntime.maxMemoryである。
+		* このアプリケーションのJava Heap Sizeの**現在の上限**
+			* Java Heap Allocated Size増加に合わせてJava Heap Sizeは増加する。  
+			このアプリケーションのJava Heap Sizeの**本当の上限**はRuntime.maxMemoryである。
 	* Java Heap Allocated Size
 		* このアプリケーションが使用中のJava Heap Size
 	* Java Heap Free Size
-		* Java Heap Sizeの残量
+		* Java Heap Sizeの**現在の残量**
 		すなわち、`Java Heap Size - Java Heap Allocated Size`
 
 
 #使用方法
 ##OutOfMemoryErrorをわざと起こす
 Java Heap 操作ボタンでJava Heapからメモリを獲得して、Java Heap Allocated Sizeを増加させる。
-Java Heap Allocated Sizeの使用量がRuntime.maxMemoryを超えるとOutOfMemoryErrorが発生して、このアプリケーションは強制終了する。
+
+Java Heap Allocated SizeがRuntime.maxMemoryを超えるとOutOfMemoryErrorが発生して、このアプリケーションは強制終了する。
 
 ##LowMemoryKillerをわざと発動させる
 Native Heap 操作ボタンでNative Heapからメモリを獲得して、Linux Heap Free Sizeを低下させる。
@@ -70,7 +71,7 @@ Linux Heap Free SizeがLow Memory Thresholdを下回るとLow Memoryがtureに�
 
 LowMemoryKillerが発動する。
 
-このアプリケーションはフォアグラウンドにあるため最もKillされ難い。LowMemoryKillerは他のアプリケーションをKillするだろう。
+このアプリケーションがフォアグラウンドにある時は、このアプリケーションは最もKillされ難い。LowMemoryKillerは他のアプリケーションをKillするだろう。
 
 他のアプリケーションがKillされると、他のアプリケーションが獲得していはJava Heap及びNative Heapが解放されるため、Linux Heap Free Sizeが増加して、Low Memoryがfalseになるだろう。
 
