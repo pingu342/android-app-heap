@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	<CheckBox android:id="@+id/EnableHeapMoniterCheckBox"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Enable Heap Moniter" />
+	<TextView android:id="@+id/JavaUsageTextView"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:text="Java Heap"
+		/>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		>
+		<Button
+			android:text="10MB"
+			android:id="@+id/JavaNew10MByteButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="1MB"
+			android:id="@+id/JavaNew1MByteButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="Unref"
+			android:id="@+id/JavaUnrefButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="GC"
+			android:id="@+id/JavaGCButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+	</LinearLayout>
+	<TextView android:id="@+id/NativeUsageTextView"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:text="Native Heap"
+		/>
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		>
+		<Button
+			android:text="100MB"
+			android:id="@+id/NativeNew100MByteButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="10MB"
+			android:id="@+id/NativeNew10MByteButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="1MB"
+			android:id="@+id/NativeNew1MByteButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+		<Button
+			android:text="Free"
+			android:id="@+id/NativeFreeButton"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			>
+		</Button>
+	</LinearLayout>
+	<ScrollView
+		android:layout_height="fill_parent"
+		android:layout_width="fill_parent">
+		<TextView android:id="@+id/HeapInfoTextView"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:singleLine="false"
+			/>
+	</ScrollView>
+</LinearLayout>
+
